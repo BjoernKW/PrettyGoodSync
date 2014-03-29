@@ -31,7 +31,7 @@ input.each_line do |line|
 			response = http.request(request)
 
 			response.body.each_line do |response_line|
-			  if response_line =~ /<a href="\/pks\/lookup\?op=get&search=(.+?)">(.+?)<\/a>/
+			  if response_line =~ /<a href="\/pks\/lookup\?op=get&amp;search=(.+?)">(.+?)<\/a>/
 			  	key_query = $1
 			    key_id = $2
 
