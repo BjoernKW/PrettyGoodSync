@@ -25,7 +25,7 @@ input.each_line do |line|
 		puts "Searching keys for #{email_address} ..."
 
 		begin
-			uri = URI.parse("http://pgp.surf.nl/pks/lookup?search=#{URI::encode(email_address)}&op=index")
+			uri = URI.parse("https://pgp.surf.nl/pks/lookup?search=#{URI::encode(email_address)}&op=index")
 			http = Net::HTTP.new(uri.host, uri.port)
 			request = Net::HTTP::Get.new(uri.request_uri)
 			response = http.request(request)
@@ -60,7 +60,7 @@ key_queries.each do |key_id, key_query|
 	  unless key_query.nil? || key_query == ''
 	  	puts "Retrieving key: #{key_query} / ID: #{key_id}, eMail address: #{email_addresses[key_id]}"
 
-		  key_uri = URI.parse("http://pgp.surf.nl/pks/lookup?op=get&search=#{key_query}")
+		  key_uri = URI.parse("https://pgp.surf.nl/pks/lookup?op=get&search=#{key_query}")
 			key_http = Net::HTTP.new(key_uri.host, key_uri.port)
 			key_request = Net::HTTP::Get.new(key_uri.request_uri)
 			key_response = key_http.request(key_request)
